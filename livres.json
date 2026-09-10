@@ -1,0 +1,10 @@
+[
+  { "titre": "Le Petit Prince", "auteur": "Antoine de Saint-Exupéry", "annee": 1943 },
+  { "titre": "1984", "auteur": "George Orwell", "annee": 1949 },
+  { "titre": "Guide de survie en forêt", "auteurs": ["J. Dupont", "M. Martin"], "annee": 2020, "illustrations": true, "chapitres": ["Orientation", "Feu", "Abri"] },
+  { "titre": "Cuisine du monde", "auteurs": ["A. Bernard", "C. Petit"], "annee": 2018, "chapitres": ["Entrées", "Plats", "Desserts"] },
+  { "titre": "Fondation", "auteur": "Isaac Asimov", "annee": 1951 },
+  { "titre": "L'Étranger", "auteur": "Albert Camus", "annee": 1942 },
+  { "titre": "Manuel de jardinage", "auteurs": ["S. Roux", "P. Blanc"], "annee": 2015, "chapitres": ["Potager", "Fleurs", "Arbres"] },
+  { "titre": "Dune", "auteur": "Frank Herbert", "annee": 1965 }
+]
