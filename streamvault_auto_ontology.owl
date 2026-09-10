@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:ex="http://www.semanticweb.org/streamvault/onto#"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+>
+  <rdf:Description rdf:about="http://www.semanticweb.org/streamvault/onto#aPourTitre">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/streamvault/onto#Film"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/streamvault/onto#WarnerAnimation">
+    <rdf:type rdf:resource="http://www.semanticweb.org/streamvault/onto#Studio"/>
+    <ex:estFilialeDe rdf:resource="http://www.semanticweb.org/streamvault/onto#WarnerBros"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/streamvault/onto#aRealise">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/streamvault/onto#Realisateur"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/streamvault/onto#Film"/>
+    <owl:inverseOf rdf:resource="http://www.semanticweb.org/streamvault/onto#estRealisePar"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/streamvault/onto#aJoueDans">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/streamvault/onto#Acteur"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/streamvault/onto#Film"/>
+    <owl:inverseOf rdf:resource="http://www.semanticweb.org/streamvault/onto#aPourActeur"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/streamvault/onto#LeonardoDiCaprio">
+    <rdf:type rdf:resource="http://www.semanticweb.org/streamvault/onto#Acteur"/>
+    <ex:aPourNom rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Leonardo DiCaprio</ex:aPourNom>
+    <ex:aJoueDans rdf:resource="http://www.semanticweb.org/streamvault/onto#Inception"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/streamvault/onto#Realisateur">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/streamvault/onto#Personne"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/streamvault/onto#aPourGenre">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/streamvault/onto#Film"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/streamvault/onto#Genre"/>
+    <owl:inverseOf rdf:resource="http://www.semanticweb.org/streamvault/onto#estDuGenre"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/streamvault/onto#aPourAnnee">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/streamvault/onto#Film"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/streamvault/onto#aPourNoteIMDB">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/streamvault/onto#Film"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/streamvault/onto#estFilialeDe">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/streamvault/onto#Studio"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/streamvault/onto#Studio"/>
+    <owl:inverseOf rdf:resource="http://www.semanticweb.org/streamvault/onto#aPourFiliale"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/streamvault/onto#aPourIdentifiantIMDB">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/streamvault/onto#Film"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/streamvault/onto#estProduitPar">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/streamvault/onto#Film"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/streamvault/onto#Studio"/>
+    <owl:inverseOf rdf:resource="http://www.semanticweb.org/streamvault/onto#aProduit"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/streamvault/onto#estSuiteDe">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/streamvault/onto#Film"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/streamvault/onto#Film"/>
+    <owl:inverseOf rdf:resource="http://www.semanticweb.org/streamvault/onto#aPourSuite"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/streamvault/onto#Casablanca">
+    <rdf:type rdf:resource="http://www.semanticweb.org/streamvault/onto#Film"/>
+    <ex:aPourTitre rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Casablanca</ex:aPourTitre>
+    <ex:aPourAnnee rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1942</ex:aPourAnnee>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/streamvault/onto#ChristopherNolan">
+    <rdf:type rdf:resource="http://www.semanticweb.org/streamvault/onto#Realisateur"/>
+    <ex:aPourNom rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Christopher Nolan</ex:aPourNom>
+    <ex:aRealise rdf:resource="http://www.semanticweb.org/streamvault/onto#Inception"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/streamvault/onto#Acteur">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/streamvault/onto#Personne"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/streamvault/onto#Studio">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/streamvault/onto#Film">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/streamvault/onto#WarnerBrosGroup">
+    <rdf:type rdf:resource="http://www.semanticweb.org/streamvault/onto#Studio"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/streamvault/onto#WarnerBros">
+    <rdf:type rdf:resource="http://www.semanticweb.org/streamvault/onto#Studio"/>
+    <ex:estFilialeDe rdf:resource="http://www.semanticweb.org/streamvault/onto#WarnerBrosGroup"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/streamvault/onto#aPourNom">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/streamvault/onto#Personne"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/streamvault/onto#DrameGenre">
+    <rdf:type rdf:resource="http://www.semanticweb.org/streamvault/onto#Genre"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/streamvault/onto#Inception">
+    <rdf:type rdf:resource="http://www.semanticweb.org/streamvault/onto#Film"/>
+    <ex:aPourTitre rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Inception</ex:aPourTitre>
+    <ex:aPourAnnee rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2010</ex:aPourAnnee>
+    <ex:aPourNoteIMDB rdf:datatype="http://www.w3.org/2001/XMLSchema#float">8.8</ex:aPourNoteIMDB>
+    <ex:aPourIdentifiantIMDB rdf:datatype="http://www.w3.org/2001/XMLSchema#string">tt1375666</ex:aPourIdentifiantIMDB>
+    <ex:aPourGenre rdf:resource="http://www.semanticweb.org/streamvault/onto#ActionGenre"/>
+    <ex:estProduitPar rdf:resource="http://www.semanticweb.org/streamvault/onto#WarnerBros"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/streamvault/onto#Personne">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/streamvault/onto#Genre">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/streamvault/onto#ActionGenre">
+    <rdf:type rdf:resource="http://www.semanticweb.org/streamvault/onto#Genre"/>
+  </rdf:Description>
+</rdf:RDF>
