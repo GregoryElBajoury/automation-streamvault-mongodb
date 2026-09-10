@@ -32,7 +32,7 @@ automation-streamvault-mongodb/
 ├── livres.json                       # Données de test initiales
 ├── requirements.txt                  # Dépendances Python (pymongo, rdflib, etc.)
 ├── streamvault_automation.py         # Script principal d'extraction et de conversion sémantique
-└── README.md
+└── README.md                         # Documentation du projet
 ```
 
 ## Guide d'Utilisation rapide
