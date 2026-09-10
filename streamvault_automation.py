@@ -25,7 +25,7 @@ MONGO_PORT = os.getenv("MONGO_PORT", "27017")
 
 def run_mongodb_pipeline():
     logger.info("==================================================")
-    logger.info("🚀 NIVEAU 1 : AUTOMATISATION MONGODB (PYMONGO)")
+    logger.info(" NIVEAU 1 : AUTOMATISATION MONGODB (PYMONGO)")
     logger.info("==================================================")
     
     uri = f"mongodb://{MONGO_USER}:{MONGO_PASS}@{MONGO_HOST}:{MONGO_PORT}/"
@@ -76,7 +76,7 @@ def run_mongodb_pipeline():
 
 def generate_ontology_code():
     logger.info("==================================================")
-    logger.info("🧠 NIVEAU 2 : GÉNÉRATION DE L'ONTOLOGIE OWL/RDF")
+    logger.info(" NIVEAU 2 : GÉNÉRATION DE L'ONTOLOGIE OWL/RDF")
     logger.info("==================================================")
     
     g = rdflib.Graph()
