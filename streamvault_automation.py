@@ -1,10 +1,19 @@
 import json
 import os
+import logging
 from dotenv import load_dotenv
 from pymongo import MongoClient
 import rdflib
 from rdflib import Namespace, Literal, URIRef
 from rdflib.namespace import RDF, OWL, RDFS, XSD
+
+# Configuration du logging structuré
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S"
+)
+logger = logging.getLogger("StreamVaultPipeline")
 
 # Chargement des variables d'environnement depuis le .env
 load_dotenv()
@@ -15,9 +24,9 @@ MONGO_HOST = os.getenv("MONGO_HOST", "localhost")
 MONGO_PORT = os.getenv("MONGO_PORT", "27017")
 
 def run_mongodb_pipeline():
-    print("==================================================")
-    print("🚀 NIVEAU 1 : AUTOMATISATION MONGODB (PYMONGO)")
-    print("==================================================")
+    logger.info("==================================================")
+    logger.info(" NIVEAU 1 : AUTOMATISATION MONGODB (PYMONGO)")
+    logger.info("==================================================")
     
     uri = f"mongodb://{MONGO_USER}:{MONGO_PASS}@{MONGO_HOST}:{MONGO_PORT}/"
     client = MongoClient(uri)
@@ -33,42 +42,42 @@ def run_mongodb_pipeline():
                     collection.insert_many(data)
                 elif isinstance(data, dict):
                     collection.insert_one(data)
-            print(f"📁 Données de '{json_path}' importées avec succès dans MongoDB !")
+            logger.info(f"📁 Données de '{json_path}' importées avec succès dans MongoDB !")
         else:
-            print(f"⚠️ Attention : le fichier {json_path} est introuvable !")
+            logger.warning(f"⚠️ Attention : le fichier {json_path} est introuvable !")
 
     count_initial = collection.count_documents({})
-    print(f"[Q3] Documents totaux : {count_initial}")
+    logger.info(f"[Q3] Documents totaux : {count_initial}")
     
     first = collection.find_one()
     second = collection.find().skip(1).limit(1).next()
-    print(f"[Q4] Premier livre (Titre) : {first.get('titre')}")
-    print(f"[Q5] Deuxième livre (Auteur) : {second.get('auteur', second.get('auteurs'))}")
+    logger.info(f"[Q4] Premier livre (Titre) : {first.get('titre')}")
+    logger.info(f"[Q5] Deuxième livre (Auteur) : {second.get('auteur', second.get('auteurs'))}")
     
     multi = collection.find_one({"auteurs": {"$exists": True}})
     if multi:
-        print(f"[Q6] Livre multi-auteurs : {multi.get('titre')}")
-        print(f"[Q7] Chapitres associés : {multi.get('chapitres')}")
+        logger.info(f"[Q6] Livre multi-auteurs : {multi.get('titre')}")
+        logger.info(f"[Q7] Chapitres associés : {multi.get('chapitres')}")
         
     oldest = collection.find_one(sort=[("annee", 1)])
     newest = collection.find_one(sort=[("annee", -1)])
-    print(f"[Q8] Plus ancien : {oldest.get('titre')} ({oldest.get('annee')})")
-    print(f"[Q9] Plus récent : {newest.get('titre')} ({newest.get('annee')})")
+    logger.info(f"[Q8] Plus ancien : {oldest.get('titre')} ({oldest.get('annee')})")
+    logger.info(f"[Q9] Plus récent : {newest.get('titre')} ({newest.get('annee')})")
     
     gt_2000 = collection.count_documents({"annee": {"$gt": 2000}})
     lt_1950 = collection.count_documents({"annee": {"$lt": 1950}})
-    print(f"[Q12] > 2000 : {gt_2000} | [Q13] < 1950 : {lt_1950}")
+    logger.info(f"[Q12] > 2000 : {gt_2000} | [Q13] < 1950 : {lt_1950}")
     
     new_doc = {"titre": "Les Sentinelles de l'Algorithme", "auteur": "E. Turin", "annee": 2025}
     res = collection.insert_one(new_doc)
-    print(f"[Q19] Insertion OK -> Compteur : {collection.count_documents({})}")
+    logger.info(f"[Q19] Insertion OK -> Compteur : {collection.count_documents({})}")
     collection.delete_one({"_id": res.inserted_id})
-    print(f"[Q20] Suppression OK -> Compteur initial restauré : {collection.count_documents({})}\n")
+    logger.info(f"[Q20] Suppression OK -> Compteur initial restauré : {collection.count_documents({})}\n")
 
 def generate_ontology_code():
-    print("==================================================")
-    print("🧠 NIVEAU 2 : GÉNÉRATION DE L'ONTOLOGIE OWL/RDF")
-    print("==================================================")
+    logger.info("==================================================")
+    logger.info(" NIVEAU 2 : GÉNÉRATION DE L'ONTOLOGIE OWL/RDF")
+    logger.info("==================================================")
     
     g = rdflib.Graph()
     EX = Namespace("http://www.semanticweb.org/streamvault/onto#")
@@ -151,7 +160,7 @@ def generate_ontology_code():
 
     output_file = "streamvault_auto_ontology.owl"
     g.serialize(destination=output_file, format="xml")
-    print(f"✅ Ontologie OWL générée et enregistrée dans '{output_file}' ({len(g)} triplets).")
+    logger.info(f"✅ Ontologie OWL générée et enregistrée dans '{output_file}' ({len(g)} triplets).")
 
 if __name__ == "__main__":
     run_mongodb_pipeline()
